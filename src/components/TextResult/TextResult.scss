@@ -1,0 +1,27 @@
+.text-result {
+  &-table {
+    text-align: left;
+    width: 100%;
+    border-collapse:collapse;
+    margin-bottom: 24px;
+
+    td, th {
+      padding: 10px;
+      border: 1px #CCCCCC solid;
+    }
+
+    &__link {
+      font-weight: 600;
+      transition: 0.5s all ease;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 26px;
+  }
+}

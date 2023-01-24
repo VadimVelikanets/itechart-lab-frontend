@@ -3,7 +3,7 @@ import './Results.scss';
 import ResultsCommon from "../../components/ResultsCommon/ResultsCommon";
 const Results = () => {
     return (
-        <div>
+        <div className="results-page">
             <h1 className="title">Results</h1>
             <ResultsCommon/>
         </div>

@@ -1,61 +1,26 @@
 import React from 'react';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-);
-
-export const options = {
-    indexAxis: 'y' as const,
-    elements: {
-        bar: {
-            borderWidth: 2,
-        },
-    },
-    responsive: true,
-    plugins: {
-        legend: {
-            position: 'right' as const,
-        },
-        title: {
-            display: true,
-            text: '1. Question with few variants',
-        },
-    },
-};
-
-const labels = ['Answers 1', 'Answers 2', 'Answers 3', 'Answers 4'];
-
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: '1. Question with few variants',
-            data: [1, 10, 24, 134],
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        },
-
-    ],
-};
-
+import BarItem from "../BarItem/BarItem";
+import './ResultsCommon.scss';
+import TextResult from "../TextResult/TextResult";
+import FileResult from "../FileResults/FileResult";
 const ResultsCommon = () => {
     return (
-        <Bar options={options} data={data} />
+        <div className="results-common">
+            <BarItem
+                title="1. Question with few variants"
+            />
+            <BarItem
+                title="2. Question with one variant"
+            />
+            <TextResult
+                title="3. Text questins results"
+            />
+            <FileResult title="4. File question results"
+            />
+            <BarItem
+                title="5. Rating"
+            />
+        </div>
     );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PollsList from "../../components/PollsList/PollsList";
+import './MyPolls.scss';
 const MyPolls = () => {
     return (
         <div className="mypolls-page">

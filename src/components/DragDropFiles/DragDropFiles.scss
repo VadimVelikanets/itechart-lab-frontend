@@ -1,0 +1,15 @@
+.drag-n-drop {
+  padding: 20px 10px;
+  border: 3px #000000 dashed;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  max-width: 200px;
+  width: 100%;
+
+  &--active {
+    color: royalblue;
+    border: 1px royalblue dashed;
+  }
+}

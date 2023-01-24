@@ -1,0 +1,28 @@
+.pollslist {
+  &-table {
+    width: 100%;
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+    }
+
+    thead {
+      background-color: #F0FFFF;
+    }
+
+    &__link {
+      font-weight: 600;
+      transition: 0.5s all ease;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    &__footer {
+      background-color: #F0FFFF;
+      font-weight: 600;
+    }
+  }
+}

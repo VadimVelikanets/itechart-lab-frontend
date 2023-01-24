@@ -1,0 +1,19 @@
+.file {
+  position: relative;
+
+  &__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &-name {
+    margin-top: 10px;
+    font-weight: 600;
+  }
+}

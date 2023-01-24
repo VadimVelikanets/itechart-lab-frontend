@@ -1,0 +1,25 @@
+.tabs {
+  width: 100%;
+
+  &-navigation {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 0;
+
+    &__item {
+      padding: 12.5px;
+      list-style: none;
+      cursor: pointer;
+      background-color: #E0FFFF;
+      color: #000000;
+      border-radius: 4px 4px 0px 0px;
+      margin-right: 2px;
+      line-height: 1.2;
+      font-weight: 600;
+
+      &--active {
+        background-color: #ADD8E6;
+      }
+    }
+  }
+}

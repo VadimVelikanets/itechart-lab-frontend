@@ -1,6 +1,8 @@
 import React from 'react';
 import {iButton} from "./types";
-const Button = ({name, btnEvent, disabled, className, tabIndex}: iButton) => {
+import './Button.scss';
+import classNames from "classnames";
+const Button = ({children, btnEvent, disabled, className, tabIndex}: iButton) => {
     const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
         e.preventDefault();
         if(e.key === "Enter" || e.key === '') {
@@ -9,16 +11,14 @@ const Button = ({name, btnEvent, disabled, className, tabIndex}: iButton) => {
     }
 
     return (
-        <div
+        <button
             onClick={btnEvent}
             onKeyDown={onKeyDown}
-            className={className}
-            role='tab'
-            tabIndex={tabIndex}
-            aria-disabled={false}
+            className={classNames("button ", { [className] : className })}
+            disabled={disabled}
         >
-            {name}
-        </div>
+            {children}
+        </button>
     );
 };
 

@@ -5,8 +5,9 @@ import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import FormatStrikethroughIcon from '@mui/icons-material/FormatStrikethrough';
-import {createUniqueId} from "../../utils/createUniqueId";
-const Textfield = () => {
+import {createUniqueId} from "../../../utils/createUniqueId";
+import { iTextfieldProps } from './types';
+const Textfield = ({value, onChange}: iTextfieldProps) => {
     const [isBold, setBold] = useState(false);
     const [isItalic, setItalic] = useState(false);
     const [textDecoration, setTextDecoration] = useState<string | null>(null);
@@ -68,6 +69,8 @@ const Textfield = () => {
                     "textfield-textarea--underline": textDecoration === 'underline',
                     "textfield-textarea--linethough": textDecoration === 'line-through',
                     })}
+                value={value}
+                onChange={onChange}    
             ></textarea>
         </div>
     );

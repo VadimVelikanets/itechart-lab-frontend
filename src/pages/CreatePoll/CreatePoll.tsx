@@ -1,6 +1,6 @@
 import React from 'react';
-import Tabs from "../../components/Tabs/Tabs";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Tabs from "../../components/organisms/Tabs/Tabs";
+import Sidebar from "../../components/molecules/Sidebar/Sidebar";
 const CreatePoll = () => {
     return (
         <>

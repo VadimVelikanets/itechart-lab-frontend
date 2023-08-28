@@ -1,24 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {iRange} from "./types";
 import './Range.scss';
 
-const Range = ({min, max}: iRange) => {
-    const [range, setRange] = useState<string | number>(0);
-
-    const onChangeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setRange(e.target.value)
-    }
+const Range = ({value, onChange, min, max}: iRange) => {
 
     return (
-        <div className="range">
-            <span  className="range-value">{range}</span>
+        <div className="range" onClick={e => e.stopPropagation()}>
+            <span  className="range-value">{value}</span>
             <input className="range-input"
                    type="range"
                    id="points"
                    name="points"
                    min={min} max={max}
-                   value={range}
-                   onChange={onChangeRange}
+                   value={value}
+                   onChange={onChange}
             />
             <div className="range-params">
                 <span>{min}</span>

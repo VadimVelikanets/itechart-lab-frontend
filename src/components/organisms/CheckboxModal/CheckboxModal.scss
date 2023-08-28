@@ -1,0 +1,54 @@
+.modal-checkbox {
+  background-color: #FFFFFF;
+  border-radius: 32px 26px;
+  padding: 32px;
+  min-width: 300px;
+  text-align: center;
+
+  input {
+    border: 1px #CCCCCC solid;
+    border-radius: 4px;
+    padding: 12.5px 15px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  &__text, &__list {
+    color: #000000;
+    text-align: left;
+  }
+
+  &__list {
+    list-style: none;
+
+    li {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__button {
+    margin-top: 16px;
+    border: none;
+    padding: 12.5px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #1E90FF;
+    color: #FFFFFF;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.5s all ease;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

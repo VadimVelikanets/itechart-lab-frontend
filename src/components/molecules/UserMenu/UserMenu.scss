@@ -1,0 +1,15 @@
+.user-menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__name {
+    margin-right: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+
+  &__logout {
+    cursor: pointer;
+  }
+}

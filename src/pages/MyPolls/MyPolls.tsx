@@ -1,5 +1,5 @@
 import React from 'react';
-import PollsList from "../../components/PollsList/PollsList";
+import PollsList from "../../components/molecules/PollsList/PollsList";
 import './MyPolls.scss';
 const MyPolls = () => {
     return (

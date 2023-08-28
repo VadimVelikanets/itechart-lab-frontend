@@ -1,8 +1,8 @@
 import React from 'react';
-import BarItem from "../BarItem/BarItem";
+import BarItem from "../../molecules/BarItem/BarItem";
 import './ResultsCommon.scss';
-import TextResult from "../TextResult/TextResult";
-import FileResult from "../FileResults/FileResult";
+import TextResult from "../../molecules/TextResult/TextResult";
+import FileResult from "../../molecules/FileResults/FileResult";
 const ResultsCommon = () => {
     return (
         <div className="results-common">

@@ -1,0 +1,56 @@
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 48px;
+  background-color: #FFA07A;
+  border-radius: 4px;
+  align-items: stretch;
+  color: #FFFFFF;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  &__button {
+    padding: 12.5px 25px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: none;
+    color: #FFA07A;
+
+  }
+
+  .input {
+    input {
+      width: 100%;
+      padding: 12.5px;
+      border-radius: 2px;
+      border: none;
+      outline: none;
+      margin-bottom: 12px;
+    }
+
+    &__label {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    margin-top: 10px;
+
+    a {
+      font-weight: 600;
+      text-decoration: underline;
+      color: #FFFFFF;
+    }
+  }
+}

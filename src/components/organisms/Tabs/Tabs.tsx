@@ -1,20 +1,28 @@
-import React, {memo, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import './Tabs.scss';
 import classNames from 'classnames';
 import QuestionForm from "../QuestionForm/QuestionForm";
 import Button from "../../atoms/Button/Button";
+import Input from '../../atoms/Input/Input';
 import {useQuestionFormContext} from "../../../context/QuestionFormContext";
 import {useHistory} from "react-router-dom";
-import {createPoll} from "../../../api/poll";
+import {createPoll, editPoll} from "../../../api/poll";
 import CloseIcon from '@mui/icons-material/Close';
 import {useAppSelector} from "../../../hooks/store";
+import {iTabs} from './types';
 
-const Tabs = () => {
+const Tabs = ({savedTitle, isEditMode, id}: iTabs) => {
     const history = useHistory();
     const uId = useAppSelector(state => state.user?.user?.id);
     const {questionForm, currentTab, setCurrentTab, setQuestionForm} = useQuestionFormContext();
     const arr = [...questionForm];
-    const [pollName, setPollName] = useState('');
+    const [title, setTitle] = useState( '');
+
+    useEffect(() => {
+            setTitle(savedTitle);
+
+    }, [savedTitle])
+
     const onAddPage = () => {
         arr.push({
             id: arr.length + 1,
@@ -24,10 +32,17 @@ const Tabs = () => {
 
         setQuestionForm(arr);
     };
+
     const onAddPoll = () => {
-        createPoll(uId, questionForm)
+        createPoll(uId, title, questionForm)
         history.push('/my-polls')
     }
+
+    const onSaveEdit = () => {
+        editPoll(id, title, questionForm)
+        history.push('/my-polls')
+    }
+
     const onDeletePage = (id: number) => {
         const updatedArr = arr.filter(i => i.id !== id);
         const arr2 = updatedArr.map((item, index) => ({
@@ -47,6 +62,8 @@ const Tabs = () => {
                 <Input
                     label="Poll title"
                     type="text"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
                 />
             </div>
             <div className="tabs-navigation">
@@ -82,11 +99,18 @@ const Tabs = () => {
                 ))}
             </div>
             <div className="tabs-footer">
-                <Button btnEvent={onAddPoll}
-                        className="poll-btn"
-                >Create Poll</Button>
+                {isEditMode ? (
+                    <Button btnEvent={onSaveEdit}
+                            className="poll-btn"
+                            disabled={title === ''}
+                    >Save Changes</Button>
+                ) : (
+                    <Button btnEvent={onAddPoll}
+                            className="poll-btn"
+                            disabled={title === ''}
+                    >Create Poll</Button>
+                )}
             </div>
-
         </div>
     );
 };

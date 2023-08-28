@@ -1,0 +1,26 @@
+.header {
+  padding: 30px 24px;
+  border-bottom: 1px solid #DCDCDC;
+  background: #7B68EE;
+  color: #FFFFFF;
+
+  &__container {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 24px;
+    color: #FFFFFF;
+  }
+}

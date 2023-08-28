@@ -1,7 +1,7 @@
 import React from "react";
 export interface iButton {
     disabled?: boolean,
-    name: string,
+    children: string | JSX.Element,
     btnEvent: () => void,
     className?: string,
     tabIndex?: number

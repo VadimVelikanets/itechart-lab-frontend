@@ -1,12 +1,33 @@
-.question-form {
-  padding: 40px 26px;
-  border-radius: 6px;
-  background-color: #E0FFFF;
+.questionnaire-form {
+  padding: 40px 0px 0;
+  display: none;
+
+  &--active {
+    display: block;
+  }
 
   &__title {
     font-size: 20px;
     line-height: 1.2;
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
+  }
+
+  .questionnaire-item {
+    margin: 15px 0;
+    padding: 15px 15px;
+    border-radius: 8px;
+    position: relative;
+    background-color: #E0FFFF;
+  
+    &__wrapper {
+      width: 100%;
+    }
+  
+    &__title {
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
   }
 }

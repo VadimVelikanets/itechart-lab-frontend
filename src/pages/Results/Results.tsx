@@ -1,6 +1,6 @@
 import React from 'react';
 import './Results.scss';
-import ResultsCommon from "../../components/ResultsCommon/ResultsCommon";
+import ResultsCommon from "../../components/organisms/ResultsCommon/ResultsCommon";
 const Results = () => {
     return (
         <div className="results-page">

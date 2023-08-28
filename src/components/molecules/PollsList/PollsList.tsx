@@ -1,79 +1,87 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./PollsList.scss";
+import Loader from '../../atoms/Loader/Loader';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import {NavLink} from "react-router-dom";
-import {createUniqueId} from "../../utils/createUniqueId";
-const PollsList = () => {
+import {createUniqueId} from "../../../utils/createUniqueId";
+import {useAppSelector} from "../../../hooks/store";
+import {getPollsByUser, deletePollById} from "../../../api/poll";
+import {dateFormat} from "../../../utils/dateFormat";
+import {countResultsByPoll} from "../../../api/result";
 
-    const pollsList = [
-        {
-            title: "Poll 1",
-            edited: "11.12.2020",
-            answers: 10,
-            link: "/poll",
-            results: "/results",
-            edit: "/edit"
-        },
-        {
-            title: "Poll 4",
-            edited: "21.12.2022",
-            answers: 67,
-            link: "/poll",
-            results: "/results",
-            edit: "/edit"
-        },
-        {
-            title: "Poll 56",
-            edited: "01.01.2023",
-            answers: 15,
-            link: "/poll",
-            results: "/results",
-            edit: "/edit"
-        },
-    ]
+const PollsList = () => {
+    const uId = useAppSelector(state => state.user?.user?.id);
+    const [pollsList, setPollsList] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+    useEffect(() => {
+        getPollsByUser(uId).then(data => {
+            setPollsList(data)
+            setLoading(false);
+        })
+    }, [isLoading])
+
+    if (isLoading) return <Loader/>
+
+    const onDeleteItem = (id: string) => {
+        deletePollById(id)
+        const filtredArr = pollsList.filter(i => i._id !== id)
+        setPollsList(filtredArr)
+    }
+
+    const getAnswersCount = async (pId) => {
+        const value = await countResultsByPoll(pId);
+        console.log(value);
+    }
+    getAnswersCount('63d91c15077c26deb050d156')
+    
     return (
         <div className="pollslist">
             <table className="pollslist-table">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Edited</th>
-                        <th>Answers</th>
-                        <th>Link</th>
-                        <th>Results</th>
-                        <th>Actions</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Edited</th>
+                    <th>Answers</th>
+                    <th>Link</th>
+                    <th>Results</th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody>
                     {pollsList.map(item => (
                         <tr key={createUniqueId()}>
-                            <td>{item.title}</td>
-                            <td>{item.edited}</td>
-                            <td>{item.answers}</td>
+                            <td>{item?.title}</td>
+                            <td>{dateFormat(item?.updated_at)}</td>
+                            <td>0</td>
                             <td>
-                                <NavLink to={item.link}
+                                <NavLink to={`/questionnaire/${item?._id}`}
                                          className="pollslist-table__link"
                                 >
                                     Link
                                 </NavLink>
                             </td>
                             <td>
-                                <NavLink to={item.results}
+                                <NavLink to={'/results'}
                                          className="pollslist-table__link"
                                 >
                                     Results
                                 </NavLink>
                             </td>
                             <td>
-                                <EditIcon/>
-                                <DeleteOutlineIcon/>
+                                <NavLink to={`/edit-poll/${item?._id}`}>
+                                    <EditIcon/>
+                                </NavLink>
+
+                                <DeleteOutlineIcon
+                                    onClick={() => onDeleteItem(item?._id)}
+                                />
                             </td>
                         </tr>
                     ))}
                     <tr className="pollslist-table__footer">
                         <td colSpan={6}>
-                            Total result: {pollsList.length}
+                            Total result: {pollsList?.length} 
                         </td>
                     </tr>
                 </tbody>

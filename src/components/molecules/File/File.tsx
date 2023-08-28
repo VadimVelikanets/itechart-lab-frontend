@@ -2,17 +2,20 @@ import React, {useState} from 'react';
 import './File.scss';
 import DragDropFiles from "../../atoms/DragDropFiles/DragDropFiles";
 import Button from '@mui/material/Button';
-const File = () => {
+import { iFileProps } from './types';
+
+const File = ({getFileData}: iFileProps) => {
     const [fileName, setFileName] = useState<string | null>(null);
     const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.files?.[0]?.name)
         if(e.target.files?.[0]?.name) {
             setFileName(e.target.files?.[0]?.name)
+            getFileData(e.target.files?.[0]?.name);
         }
     }
 
     const onDropFile = (fileName: string) => {
         setFileName(fileName)
+        getFileData(fileName);
     }
 
     return (

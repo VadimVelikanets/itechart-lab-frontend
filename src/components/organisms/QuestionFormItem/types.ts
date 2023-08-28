@@ -1,4 +1,4 @@
-import {formType, optionItem} from "../../types/QuestionForm";
+import {formType, optionItem} from "../../../types/QuestionForm";
 
 export interface iQuestionFormItem {
     name: string,

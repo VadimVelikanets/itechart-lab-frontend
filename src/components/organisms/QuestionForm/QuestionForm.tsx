@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import './QuestionForm.scss';
 import {iQuestionForm} from "./types";
 import QuestionFormItem from "../QuestionFormItem/QuestionFormItem";
-import {useQuestionFormContext} from "../../context/QuestionFormContext";
-import {createUniqueId} from "../../utils/createUniqueId";
+import {useQuestionFormContext} from "../../../context/QuestionFormContext";
+import {createUniqueId} from "../../../utils/createUniqueId";
 const QuestionForm = ({title, items, id}: iQuestionForm) => {
     const {currentTab, questionForm, setQuestionForm} = useQuestionFormContext();
     const dragItem = React.useRef<any>(null);
@@ -27,7 +27,6 @@ const QuestionForm = ({title, items, id}: iQuestionForm) => {
         arr.splice(currentTab - 1,1, pageData);
         setQuestionForm(arr);
     }
-
 
     return (
         <div className="question-form">

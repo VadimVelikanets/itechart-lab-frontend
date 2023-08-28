@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './File.scss';
-import DragDropFiles from "../DragDropFiles/DragDropFiles";
+import DragDropFiles from "../../atoms/DragDropFiles/DragDropFiles";
 import Button from '@mui/material/Button';
 const File = () => {
     const [fileName, setFileName] = useState<string | null>(null);
